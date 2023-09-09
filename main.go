@@ -1,6 +1,7 @@
 package main
 
 import (
+	"AbdelrahmanDwedar/blogo/tables"
 	"fmt"
 	"log"
 	"net/http"
@@ -16,6 +17,14 @@ func main() {
 	godotenv.Load()
 
 	r := mux.NewRouter()
+
+	store := tables.NewPostgresStore()
+	defer func() {
+		err := store.Client.Close()
+		if err != nil {
+			return
+		}
+	}()
 
 	srv := &http.Server{
 		Handler:      r,
