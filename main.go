@@ -26,6 +26,10 @@ func main() {
 		}
 	}()
 
+	server := NewServer(store)
+
+	r.HandleFunc("/ping", server.Ping)
+
 	srv := &http.Server{
 		Handler:      r,
 		Addr:         fmt.Sprintf(":%s", os.Getenv("PORT")),
