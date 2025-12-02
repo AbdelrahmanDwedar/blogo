@@ -1,0 +1,173 @@
+### Blogo API Examples
+### Use with REST Client extensions in VS Code or any HTTP client
+
+@baseUrl = http://localhost:8080
+@token = YOUR_JWT_TOKEN_HERE
+
+### Health Check
+GET {{baseUrl}}/ping
+
+### ==================== USER ENDPOINTS ====================
+
+### Create New User
+POST {{baseUrl}}/api/u/new
+Content-Type: application/json
+
+{
+  "username": "johndoe",
+  "email": "john@example.com",
+  "display_name": "John Doe"
+}
+
+### Create Another User
+POST {{baseUrl}}/api/u/new
+Content-Type: application/json
+
+{
+  "username": "janedoe",
+  "email": "jane@example.com",
+  "display_name": "Jane Doe"
+}
+
+### Get User by ID
+GET {{baseUrl}}/api/u/1
+
+### Update User Profile (Authenticated)
+POST {{baseUrl}}/api/u/1/manage
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "display_name": "John Smith",
+  "bio": "Software developer and blogger",
+  "profile_image": "https://example.com/profile.jpg"
+}
+
+### Follow User (Authenticated)
+POST {{baseUrl}}/api/u/2
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "action": "follow"
+}
+
+### Unfollow User (Authenticated)
+POST {{baseUrl}}/api/u/2
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "action": "unfollow"
+}
+
+### Get User's Followers
+GET {{baseUrl}}/api/u/1/follows?limit=20&offset=0
+
+### Get Users a User is Following
+GET {{baseUrl}}/api/u/1/following?limit=20&offset=0
+
+### ==================== BLOG ENDPOINTS ====================
+
+### Get All Blogs
+GET {{baseUrl}}/api/b?limit=10&offset=0
+
+### Get Blog by ID
+GET {{baseUrl}}/api/b/1
+
+### Create New Blog (Authenticated)
+POST {{baseUrl}}/api/b/new
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "title": "Getting Started with Go",
+  "description": "A beginner's guide to Go programming",
+  "body": "Go is an open source programming language that makes it easy to build simple, reliable, and efficient software. In this post, we'll explore the basics..."
+}
+
+### Create Another Blog (Authenticated)
+POST {{baseUrl}}/api/b/new
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "title": "Why I Love Blogging",
+  "description": "My thoughts on content creation",
+  "body": "Blogging has been an incredible journey. It allows me to share my thoughts, connect with others, and document my learning process..."
+}
+
+### Update Blog (Authenticated)
+POST {{baseUrl}}/api/b/1/edit
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "title": "Getting Started with Go - Updated",
+  "description": "An updated beginner's guide to Go programming",
+  "body": "Go is an open source programming language... [Updated content here]"
+}
+
+### Delete Blog (Authenticated)
+POST {{baseUrl}}/api/b/1/delete
+Authorization: Bearer {{token}}
+
+### Like Blog (Authenticated)
+POST {{baseUrl}}/api/b/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "action": "like"
+}
+
+### Unlike Blog (Authenticated)
+POST {{baseUrl}}/api/b/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "action": "unlike"
+}
+
+### Get Blog Likes
+GET {{baseUrl}}/api/b/1/likes?limit=20&offset=0
+
+### ==================== PAGINATION EXAMPLES ====================
+
+### Get Blogs with Pagination
+GET {{baseUrl}}/api/b?limit=5&offset=0
+
+### Get Next Page of Blogs
+GET {{baseUrl}}/api/b?limit=5&offset=5
+
+### ==================== ERROR EXAMPLES ====================
+
+### Unauthorized Request (No Token)
+POST {{baseUrl}}/api/b/new
+Content-Type: application/json
+
+{
+  "title": "This should fail",
+  "body": "Because no auth token is provided"
+}
+
+### Invalid Token
+POST {{baseUrl}}/api/b/new
+Authorization: Bearer invalid_token_here
+Content-Type: application/json
+
+{
+  "title": "This should also fail",
+  "body": "Because the token is invalid"
+}
+
+### Invalid Request Body
+POST {{baseUrl}}/api/u/new
+Content-Type: application/json
+
+{
+  "username": "test"
+}
+
+
