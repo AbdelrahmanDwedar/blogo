@@ -485,28 +485,21 @@ docker run -p 8080:8080 --env-file .env blogo
 
 ## Contributing 🤝
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+We welcome contributions! Before starting work on a feature:
+
+1. Check [TODO.md](TODO.md) for planned features
+2. Open an issue to discuss your idea
+3. Fork the repository
+4. Create your feature branch (`git checkout -b feature/amazing-feature`)
+5. Commit your changes (`git commit -m 'Add some amazing feature'`)
+6. Push to the branch (`git push origin feature/amazing-feature`)
+7. Open a Pull Request
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
 
 ## License 📄
 
 This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Roadmap 🗺️
-
-- [ ] Add OAuth2 integration (Google, GitHub)
-- [ ] Implement search functionality
-- [ ] Add image upload support
-- [ ] Add comments on blog posts
-- [ ] Add tags/categories for blogs
-- [ ] Add user verification system
-- [ ] Add email notifications
-- [ ] Add rate limiting middleware
-- [ ] Add comprehensive test suite
-- [ ] Add API documentation with Swagger
 
 ## Support 💬
 

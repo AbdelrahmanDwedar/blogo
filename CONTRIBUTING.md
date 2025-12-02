@@ -28,12 +28,18 @@ Before creating bug reports, please check existing issues to avoid duplicates.
 
 Enhancement suggestions are tracked as GitHub issues.
 
+**Before suggesting an enhancement:**
+
+- Check [TODO.md](TODO.md) to see if it's already planned
+- Search existing issues to avoid duplicates
+
 **When suggesting an enhancement:**
 
 - Use a clear and descriptive title
 - Provide a detailed description of the suggested enhancement
 - Explain why this enhancement would be useful
 - Include examples if applicable
+- Reference the roadmap if applicable
 
 ### Pull Requests 🔀
 
@@ -120,13 +126,21 @@ Follow the official [Go Code Review Comments](https://github.com/golang/go/wiki/
 
 ```
 blogo/
-├── auth/           # Authentication and JWT handling
-├── cache/          # Redis caching layer
-├── tables/         # Database models and operations
-├── scripts/        # Utility scripts
-├── api.go          # API handlers
-└── main.go         # Application entry point
+├── cmd/                    # Application entry points
+│   ├── api/               # Main API server
+│   └── seed/              # Database seeding
+├── internal/              # Private application code
+│   ├── domain/           # Core business layer
+│   ├── usecase/          # Business logic
+│   ├── delivery/http/    # HTTP handlers
+│   └── infrastructure/   # External implementations
+├── pkg/                   # Public reusable packages
+│   ├── auth/             # JWT authentication
+│   └── response/         # HTTP response helpers
+└── scripts/              # Utility scripts
 ```
+
+See [ARCHITECTURE.md](ARCHITECTURE.md) for detailed architecture documentation.
 
 ### Best Practices
 
@@ -238,23 +252,14 @@ docs: update API documentation for blog endpoints
 
 ## Features We'd Love to See
 
-### High Priority
-- [ ] OAuth2 integration (Google, GitHub)
-- [ ] Search functionality for blogs
-- [ ] Rate limiting middleware
-- [ ] Comprehensive test coverage
+Check out our complete roadmap in [TODO.md](TODO.md) for planned features and enhancements!
 
-### Medium Priority
-- [ ] Image upload support
-- [ ] Comments on blog posts
-- [ ] Tags/categories for blogs
-- [ ] Email notifications
-
-### Low Priority
-- [ ] User verification system
-- [ ] Admin dashboard
-- [ ] Blog analytics
-- [ ] Export/Import functionality
+**Before starting work on a feature:**
+1. Check if it's already in the roadmap
+2. Open an issue or discussion to coordinate
+3. Follow the clean architecture patterns in the codebase
+4. Add tests for your feature
+5. Update documentation
 
 ## Getting Help
 
